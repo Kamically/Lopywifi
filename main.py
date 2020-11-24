@@ -8,6 +8,9 @@ import ubinascii              # Needed to run any MicroPython code
 from pysense import Pysense
 import machine                # Interfaces with hardware components
 import micropython            # Needed to run any MicroPython code
+from Adafruit_IO import Client, Feed, send, receive
+
+from SI7006A20 import SI7006A20
 
 # BEGIN SETTINGS
 # These need to be change to suit your environment
@@ -15,14 +18,14 @@ RANDOMS_INTERVAL = 5000 # milliseconds
 last_random_sent_ticks = 0  # milliseconds
 
 # Wireless network
-WIFI_SSID = "xxxx"
-WIFI_PASS = "xxxx" # No this is not our regular password. :)
+WIFI_SSID = "ICIMarseille"
+WIFI_PASS = "lescleswpacestlongataper" # No this is not our regular password. :)
 
 # Adafruit IO (AIO) configuration
 AIO_SERVER = "io.adafruit.com"
 AIO_PORT = 1883
-AIO_USER = "xxxx"
-AIO_KEY = "xxxxx"
+AIO_USER = "Kamically"
+AIO_KEY = "aio_QmnV52FufJZn0MZLS230LGhI2XJE"
 AIO_CLIENT_ID = ubinascii.hexlify(machine.unique_id())  # Can be anything
 AIO_CONTROL_FEED = "Kamically/feeds/temperature"
 
@@ -71,8 +74,23 @@ def send_random():
     finally:
         last_random_sent_ticks = time.ticks_ms()
 
+
 # Use the MQTT protocol to connect to Adafruit IO
 client = MQTTClient(AIO_CLIENT_ID, AIO_SERVER, AIO_PORT, AIO_USER, AIO_KEY)
+
+#currentTemperature
+def temperature ():
+    py = Pysense()
+    si = SI7006A20(py)
+
+while True:
+temp=si.temperature():
+client.publish(topic=AIO_CONTOL_FEED, msg=str(some_number))
+currentTemperature = aio.receive("temperature").value print (currentTemperature) print("done")
+time.sleep(30)
+
+
+
 
 # Subscribed messages will be delivered to this callback
 client.set_callback(sub_cb)
