@@ -18,16 +18,16 @@ RANDOMS_INTERVAL = 5000 # milliseconds
 last_random_sent_ticks = 0  # milliseconds
 
 # Wireless network
-WIFI_SSID = "ICIMarseille"
-WIFI_PASS = "lescleswpacestlongataper" # No this is not our regular password. :)
+WIFI_SSID = "xxx"
+WIFI_PASS = "xxxx" # No this is not our regular password. :)
 
 # Adafruit IO (AIO) configuration
 AIO_SERVER = "io.adafruit.com"
 AIO_PORT = 1883
-AIO_USER = "Kamically"
-AIO_KEY = "aio_QmnV52FufJZn0MZLS230LGhI2XJE"
+AIO_USER = "xxx"
+AIO_KEY = "xxxxx"
 AIO_CLIENT_ID = ubinascii.hexlify(machine.unique_id())  # Can be anything
-AIO_CONTROL_FEED = "Kamically/feeds/temperature"
+AIO_CONTROL_FEED = "xxxx/feeds/temperature"
 
 # WIFI
 # We need to have a connection to WiFi for Internet access
